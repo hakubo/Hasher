@@ -27,6 +27,17 @@ Isn't that simple ?
 
 This way you can very simply build one page web apps / sites.
 
+Hasher accepts second parameter as well that contains additional options
+
+	Hasher({},{
+		default: function(){
+			//this will be run if hash does not match any specified
+		},
+		beforeEach: function(){
+			//this will run before each callbacks on hash change
+		}
+	})
+
 Enjoy!
 
 # Licence
