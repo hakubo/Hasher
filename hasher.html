@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Router Test Page</title>
+	<title>Hasher Test Page</title>
 </head>
 <script src=hasher.js></script>
 <body>
@@ -15,9 +15,31 @@
 		}
 	});
 
-	addEventListener('click', function(){
+	Hasher({
+		'next': function(){
+			document.body.style.backgroundColor = 'purple'
+			window.onclick = function(){
+				Hasher('next/2');
+			}
+		},
+		'next/2': function(){
+			document.body.style.backgroundColor = 'green'
+		},
+		//this will be removed
+		'': false
+	},{
+		default: function(){
+			document.body.style.backgroundColor = 'red';
+			document.body.innerHTML = 'ups this page does not exist';
+		},
+		beforeEach: function(){
+			document.body.innerHTML = '';
+		}
+	});
+
+	window.onclick =  function(){
 		Hasher('page');
-	})
+	}
 </script>
 </body>
 </html>

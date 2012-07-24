@@ -1,21 +1,40 @@
 var Hasher = (function(w){
-	var hashes,
+	var loc = w.location,
+		hash,
+		hashes = {},
+		def,
+		before,
 		add = w.attachEvent ? 'attachEvent' : 'addEventListener',
 		on = w.attachEvent ? 'on' : '',
 		onChange = function(){
-			var callback = hashes[w.location.hash.slice(1)];
-			callback && callback instanceof Function && callback();
+			hash = loc.hash.slice(1);
+
+			var callback = hashes[hash];
+
+			before instanceof Function && before();
+
+			if(callback && callback instanceof Function)
+				callback();
+			else if(def instanceof Function){
+				def();
+			}
 		};
 
 	w[add](on + 'load', onChange);
 	w[add](on + 'hashchange', onChange);
 
-	return function(options){
-		var type = typeof options;
+	return function(h, options){
+		options = options || {};
+		var type = typeof h,
+			callback;
+
 		if(type == 'object'){
-			hashes = options
+			for(var prop in h) (callback = h[prop]) ? (hashes[prop] = callback) : (delete hashes[prop]);
 		}else if(type == 'string'){
-			w.location.hash = options;
+			hash !== h ? (loc.hash = h) : onChange();
 		}
+
+		def = options.default;
+		before = options.beforeEach;
 	}
 })(window);
