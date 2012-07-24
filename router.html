@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Router Test Page</title>
+</head>
+<script src=router.js></script>
+<body>
+<script>
+	Hasher({
+		'': function(){
+			document.body.style.backgroundColor = 'yellow'
+		},
+		'page': function(){
+			document.body.style.backgroundColor = 'black'
+		}
+	});
+
+	addEventListener('click', function(){
+		Hasher('page');
+	})
+</script>
+</body>
+</html>
