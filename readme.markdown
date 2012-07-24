@@ -3,6 +3,10 @@
 This is a simple helper that let's you react to hash changes
 and make this changes
 
+This lets you have full history 
+so user can go back and forward in their browsers
+and your app can react to this!
+
 #Use
 
 To listen to changes, it is as simple as calling:
