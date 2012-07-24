@@ -5,7 +5,7 @@ and make this changes
 
 #Use
 
-To listen to changes it is as simple as calling:
+To listen to changes, it is as simple as calling:
 
 	Hasher({
 		'hashName': function(){
@@ -25,7 +25,7 @@ to change hash you can simply call:
 	
 Isn't that simple ?
 
-This way you can very simply build a one page web apps / sites.
+This way you can very simply build one page web apps / sites.
 
 Enjoy!
 
